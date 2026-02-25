@@ -33,6 +33,7 @@ class _ShimmerLoadingState extends State<ShimmerLoading> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
+    // CORRECCIÓN: AnimatedBuilder es el nombre correcto
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
@@ -47,7 +48,7 @@ class _ShimmerLoadingState extends State<ShimmerLoading> with SingleTickerProvid
                 Color(0xFFF4F4F4),
                 Color(0xFFEBEBF4),
               ],
-              stops: [
+              stops: const [
                 0.0,
                 0.5,
                 1.0,
