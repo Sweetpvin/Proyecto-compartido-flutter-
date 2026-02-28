@@ -16,7 +16,7 @@ class InstagramCloneApp extends StatelessWidget {
       title: 'Instagram Clone',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system, // Detecta automáticamente el sistema
+      themeMode: ThemeMode.system,
       home: const MainNavigation(),
     );
   }
