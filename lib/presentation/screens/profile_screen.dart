@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Ingeniero Multimedia", style: TextStyle(fontWeight: FontWeight.bold)),
-          Text("Desarrollando clones de alto nivel 📱\nFlutter Nativo 100%"),
+          Text("Experto en programacion, desarollo de aplicaciones moviles y web, y diseño de interfaces de usuario."),
         ],
       ),
     );
