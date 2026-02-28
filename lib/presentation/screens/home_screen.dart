@@ -13,45 +13,40 @@ class HomeScreen extends StatelessWidget {
 
     return CustomScrollView(
       slivers: [
-        // AppBar Flotante
         SliverAppBar(
           floating: true,
-          centerTitle: false,
-          // AQUÍ USAMOS TU IMAGEN "InstagramLetra.png"
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           title: Image.asset(
             AssetPaths.logoTexto,
-            height: 40, // Altura estándar
-            color: isDark ? Colors.white : Colors.black, // Tintado dinámico
+            height: 35,
+            color: isDark ? Colors.white : Colors.black,
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.message_outlined)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.chat_bubble_outline)),
           ],
         ),
-
-        // Lista de Historias
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 105,
-            child: ListView.builder(
+            height: 100,
+            child: ListView.separated(
               scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               itemCount: MockData.usernames.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 8),
               itemBuilder: (context, index) {
                 return StoryBubble(
                   imageUrl: MockData.profileImages[index],
                   username: MockData.usernames[index],
-                  isMe: index == 0, // El primero soy yo
+                  isMe: index == 0,
                 );
               },
             ),
           ),
         ),
-
-        // Lista de Posts
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              // Usamos módulo para repetir datos infinitamente
               final userIdx = index % MockData.usernames.length;
               final postIdx = index % MockData.postImages.length;
               return PostItem(
@@ -60,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 postImage: MockData.postImages[postIdx],
               );
             },
-            childCount: 10, // Cantidad de posts simulados
+            childCount: 20,
           ),
         ),
       ],
