@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'native_network_image.dart';
 
 class StoryBubble extends StatelessWidget {
   final String imageUrl;
@@ -10,13 +10,13 @@ class StoryBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
       child: Column(
         children: [
           Container(
-            width: 68,
-            height: 68,
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: isMe ? null : const LinearGradient(
@@ -25,25 +25,24 @@ class StoryBubble extends StatelessWidget {
                 end: Alignment.topRight,
               ),
             ),
-            padding: const EdgeInsets.all(2.5), // Borde gradiente
             child: Container(
+              padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Theme.of(context).scaffoldBackgroundColor, // Borde blanco/negro interno
+                color: isDark ? Colors.black : Colors.white,
               ),
-              padding: const EdgeInsets.all(2.5),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Container(color: Colors.grey[300]),
+                child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: NativeNetworkImage(imageUrl: imageUrl),
                 ),
               ),
             ),
           ),
           const SizedBox(height: 5),
-          Text(username, style: const TextStyle(fontSize: 12)),
+          Text(username, style: const TextStyle(fontSize: 11)),
         ],
       ),
     );
