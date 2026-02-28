@@ -1,5 +1,34 @@
+name: instagram_clone
+description: "Un clon de Instagram en Flutter."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Iconos estilo iOS (necesarios para el look nativo)
+  cupertino_icons: ^1.0.2
+  
+  # Librería para cargar imágenes de internet con caché (Vital para este proyecto)
+  cached_network_image: ^3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Reglas de linting estándar
+  flutter_lints: ^2.0.0
+
 flutter:
   uses-material-design: true
+
+  # Configuración de Imágenes
+  # IMPORTANTE: Respeta los espacios (indentación) aquí abajo
   assets:
     - assets/images/InstagramLetra.png
     - assets/images/InstagramLogo.png
